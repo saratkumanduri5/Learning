@@ -57,5 +57,4 @@ Test your web server. In a web browser, type the public DNS address (or the publ
 Verify that the security group for the instance contains a rule to allow HTTP traffic on port 80. For more information, see Add rules to a security group.
 
 If you are not using Amazon Linux, you may also need to configure the firewall on your instance to allow thee connections. For more information about how to configure the firewall, see the documentation for your specific distribution.
-file:///Users/macbook/Pictures/Photos%20Library.photoslibrary/resources/proxies/derivatives/00/00/1/UNADJUSTEDNONRAW_thumb_1.jpg
 
