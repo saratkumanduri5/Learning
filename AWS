@@ -59,4 +59,5 @@ Verify that the security group for the instance contains a rule to allow HTTP tr
 If you are not using Amazon Linux, you may also need to configure the firewall on your instance to allow thee connections. For more information about how to configure the firewall, see the documentation for your specific distribution.
 
 
+![Screenshot 2021-10-04 at 12 10 18 AM](https://user-images.githubusercontent.com/91830664/135773066-fa904395-cbcf-4c03-a19b-5fa189397454.png)
 
