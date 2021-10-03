@@ -61,3 +61,53 @@ If you are not using Amazon Linux, you may also need to configure the firewall o
 
 ![Screenshot 2021-10-04 at 12 10 18 AM](https://user-images.githubusercontent.com/91830664/135773066-fa904395-cbcf-4c03-a19b-5fa189397454.png)
 
+
+To set file permissions
+Add your user (in this case, ec2-user) to the apache group.
+
+sudo usermod -a -G apache ec2-user
+
+Test your Lamp server
+If your server is installed and running, and your file permissions are set correctly, your ec2-user account should be able to create a PHP file in the /var/www/html directory that is available from the internet.
+
+To test your LAMP web server
+
+Create a PHP file in the Apache document root.
+
+echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+
+
+In a web browser, type the URL of the file that you just created. This URL is the public DNS address of your instance followed by a forward slash and the file name. For example:
+
+http://my.public.dns.amazonaws.com/phpinfo.php
+
+Secure the database server
+The default installation of the MySQL server has several features that are great for testing and development, but they should be disabled or removed for production servers. The mysql_secure_installation command walks you through the process of setting a root password and removing the insecure features from your installation. Even if you are not planning on using the MySQL server, we recommend performing this procedure.
+
+To secure the database server
+
+Start the MySQL server.
+sudo service mysqld start
+
+Run mysql_secure_installation.
+
+sudo mysql_secure_installation
+
+When prompted, type a password for the root account.
+
+Type the current root password. By default, the root account does not have a password set. Press Enter.
+
+Type Y to set a password, and type a secure password twice. For more information about creating a secure password, see https://identitysafe.norton.com/password-generator/. Make sure to store this password in a safe place.
+
+Setting a root password for MySQL is only the most basic measure for securing your database. When you build or install a database-driven application, you typically create a database service user for that application and avoid using the root account for anything but database administration.
+
+Type Y to remove the anonymous user accounts.
+
+Type Y to disable the remote root login.
+
+Type Y to remove the test database.
+
+Type Y to reload the privilege tables and save your changes.
+
+
+
