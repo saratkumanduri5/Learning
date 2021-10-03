@@ -109,5 +109,37 @@ Type Y to remove the test database.
 
 Type Y to reload the privilege tables and save your changes.
 
+Install WordPress
+Connect to your instance, and download the WordPress installation package.
+
+To download and unzip the WordPress installation package
+
+Download the latest WordPress installation package with the wget command. The following command should always download the latest release.
+
+wget https://wordpress.org/latest.tar.gz
+
+Unzip and unarchive the installation package. The installation folder is unzipped to a folder called wordpress.
+
+tar -xzf latest.tar.gz
+
+To create a database user and database for your WordPress installation
+
+Your WordPress installation needs to store information, such as blog posts and user comments, in a database. This procedure helps you create your blog's database and a user that is authorized to read and save information to it.
+
+Start the database server.
+
+Amazon Linux 2
+
+sudo systemctl start mariadb
+
+Amazon Linux AMI
+sudo service mysqld start
+
+Log in to the database server as the root user. Enter your database root password when prompted; this may be different than your root system password, or it might even be empty if you have not secured your database server.
+
+If you have not secured your database server yet, it is important that you do so. For more information, see To secure the MariaDB server (Amazon Linux 2) or To secure the database server (Amazon Linux AMI).
+
+mysql -u root -p
+
 
 
