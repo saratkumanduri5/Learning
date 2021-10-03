@@ -144,5 +144,7 @@ mysql -u root -p
 
 ![Screenshot 2021-10-04 at 12 22 09 AM](https://user-images.githubusercontent.com/91830664/135773403-8753eff7-b6cc-41f9-8d7f-a8443f731889.png)
 
+![Screenshot 2021-10-04 at 12 27 49 AM](https://user-images.githubusercontent.com/91830664/135773464-e5eb3a53-a2c9-4901-9c7f-31385d0fa231.png)
+
 
 
