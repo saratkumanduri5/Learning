@@ -1,1 +1,60 @@
+Hosting a WordPress blog on Amazon Linux 2
+
+The following procedures will help you install, configure, and secure a WordPress blog on your Amazon Linux instance. This tutorial is a good introduction to using Amazon EC2 in that you have full control over a web server that hosts your WordPress blog, which is not typical with a traditional hosting service.
+
+
+Prerequisites
+Install a LAMP web server on Amazon Linux 2 for Amazon Linux 2. 
+
+
+The following procedures help you install an Apache web server with PHP and MySQL support on your Amazon Linux instance (sometimes called a LAMP web server or LAMP stack). You can use this server to host a static website or deploy a dynamic PHP application that reads and writes information to a database.
+
+Tasks
+
+Step 1: Prepare the LAMP server
+Step 2: Test your Lamp server
+Step 3: Secure the database server
+
+Step 1: Prepare the LAMP server
+Prerequisites
+
+This tutorial assumes that you have already launched a new instance using the Amazon Linux AMI, with a public DNS name that is reachable from the internet. For more information, see Step 1: Launch an instance. You must also have configured your security group to allow SSH (port 22), HTTP (port 80), and HTTPS (port 443) connections. For more information about these prerequisites, see Authorize inbound traffic for your Linux instances.
+
+To install and start the LAMP web server with the Amazon Linux AMI
+
+Connect to your instance.
+
+To ensure that all of your software packages are up to date, perform a quick software update on your instance. This process may take a few minutes, but it is important to make sure that you have the latest security updates and bug fixes.
+
+The -y option installs the updates without asking for confirmation. If you would like to examine the updates before installing, you can omit this option.
+sudo yum update -y
+
+Now that your instance is current, you can install the Apache web server, MySQL, and PHP software packages.
+Use the yum install command to install multiple software packages and all related dependencies at the same time.
+sudo yum install -y httpd24 php72 mysql57-server php72-mysqlnd
+
+Start the Apache web server.
+sudo service httpd start
+
+Use the chkconfig command to configure the Apache web server to start at each system boot.
+sudo chkconfig httpd on
+
+The chkconfig command does not provide any confirmation message when you successfully use it to enable a service.
+You can verify that httpd is on by running the following command:
+chkconfig --list httpd
+
+Add a security rule to allow inbound HTTP (port 80) connections to your instance if you have not already done so. By default, a launch-wizard-N security group was set up for your instance during initialization. This group contains a single rule to allow SSH connections.
+
+Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+
+Choose Instances and select your instance.
+
+On the Security tab, view the inbound rules. You should see the following rule:
+port :22
+
+Test your web server. In a web browser, type the public DNS address (or the public IP address) of your instance. You can get the public DNS address for your instance using the Amazon EC2 console. If there is no content in /var/www/html, you should see the Apache test page. When you add content to the document root, your content appears at the public DNS address of your instance instead of this test page.
+
+Verify that the security group for the instance contains a rule to allow HTTP traffic on port 80. For more information, see Add rules to a security group.
+
+If you are not using Amazon Linux, you may also need to configure the firewall on your instance to allow these connections. For more information about how to configure the firewall, see the documentation for your specific distribution.
 
