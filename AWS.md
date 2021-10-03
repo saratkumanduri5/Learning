@@ -141,7 +141,5 @@ If you have not secured your database server yet, it is important that you do so
 
 mysql -u root -p
 
-![Screenshot 2021-10-04 at 12 10 18 AM](https://user-images.githubusercontent.com/91830664/135773360-5f971b46-1cf4-401e-b030-1c5af8c5cc34.png)
-
 
 
